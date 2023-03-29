@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Microsoft Office
+Exec=MicrosoftOffice1 --no-sandbox
+Icon=/app/share/icons/hicolor/64x64/apps/me.stoober.MicrosoftOffice.png
+Type=Application
