@@ -1,0 +1,40 @@
+# DISCLAIMER: This is not technically a native app, it is an electron app 
+# created using the awesome nativefier(https://github.com/nativefier/nativefier)
+# go show them some love and make a PR, theyre the real stars of the show, I just
+# packaged this flatpak. Now time to create this thing. BTW this is for 64 bit linux,
+# wont work on different arch's
+
+app-id: me.stoober.MicrosoftOffice
+runtime: org.freedesktop.Platform
+runtime-version: '22.08'
+sdk: org.freedesktop.Sdk
+command: MicrosoftOffice1
+modules:
+  - name: start
+    buildsystem: simple
+    build-commands:
+      - install -D start /app/bin/start
+    sources:
+      - type: file
+        path: start
+
+  - name: MicrosoftOffice
+    buildsystem: simple
+    build-commands:
+      - cp -r $PWD /app/bin/
+      - ln -s /app/bin/MicrosoftOffice/MicrosoftOffice /app/bin/MicrosoftOffice1
+    sources:
+      - type: archive
+        path: MicrosoftOffice-linux-x64.tar.xz
+finish-args:
+  # X11 + XShm access
+  - --share=ipc
+  - --socket=x11
+  # Wayland access
+  - --socket=wayland
+  # Needs to talk to the network:
+  - --share=network
+  # Needs to save files locally
+  - --filesystem=xdg-documents
+  - --metadata=X-DConf=migrate-path=/org/gnome/dictionary/
+

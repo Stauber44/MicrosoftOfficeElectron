@@ -1,0 +1,5 @@
+NOTE: add flat --no-sandbox when executing to run in flatpak. 
+command to run to generate nativfier thing:
+nativefier --no-sandbox --internal-urls ".*?\.*?\.*?" --name "MicrosoftOffice" "https://outlook.office.com/mail/"
+command to turn folder to tar.xz:
+tar cfJ *folder_name*.tar.xz *folder_name*
