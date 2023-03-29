@@ -10,6 +10,20 @@ runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 command: start
 modules:
+  - name: desktop
+    buildsystem: simple
+    build-commands:
+      - ls
+      - mkdir -p /app/share/icons/hicolor/64x64/apps/
+      - mkdir -p /app/share/applications/
+      - desktop-file-edit --set-icon me.stoober.MicrosoftOffice --set-key Exec --set-value 'MicrosoftOffice1 --no-sandbox' me.stoober.MicrosoftOffice.desktop
+      - install -Dm644 me.stoober.MicrosoftOffice.png /app/share/icons/hicolor/64x64/apps/
+      - install -Dm644 me.stoober.MicrosoftOffice.desktop /app/share/applications/
+      - ls
+    sources:
+      - type: archive
+        path: Desktop.tar.xz
+
   - name: start
     buildsystem: simple
     build-commands:
@@ -26,6 +40,7 @@ modules:
     sources:
       - type: archive
         path: MicrosoftOffice-linux-x64.tar.xz
+
 finish-args:
   # X11 + XShm access
   - --share=ipc
