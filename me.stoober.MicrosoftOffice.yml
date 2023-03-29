@@ -8,7 +8,7 @@ app-id: me.stoober.MicrosoftOffice
 runtime: org.freedesktop.Platform
 runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
-command: MicrosoftOffice1
+command: start
 modules:
   - name: start
     buildsystem: simple
